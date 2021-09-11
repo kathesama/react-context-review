@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import { Route, Switch } from 'react-router-dom';
+import AllMeetupsPage from './pages/allMeetups/AllMeetups';
+import FavoritesPage from './pages/favorites/Favorites';
+import NewMeetupPage from './pages/meetups/newMeetUp.component';
+import MainNavigation from './component/layout/mainNavigation.component';
+import Layout from './component/layout/layout.component';
+
+// import TodoComponent from './component/todo/TodoComponent';
+// import BackdropComponent from './component/backdrop/BackdropComponent';
+// import ModalComponent from './component/modal/ModalComponent';
+
+// function App() {
+//   return (
+//     <div>
+//       <h1>My Todos</h1>
+//       <TodoComponent text="first" />
+//       <TodoComponent text="second" />
+//       <TodoComponent text="third" />
+//       {/*<ModalComponent/>*/}
+//       {/*<BackdropComponent/>*/}
+//     </div>
+//   );
+// }
+//
+// export default App;
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return <Layout>
+    <Switch>
+      <Route path='/' exact>
+        <AllMeetupsPage/>
+      </Route>
+      <Route path='/new-meetup'>
+        <NewMeetupPage/>
+      </Route>
+      <Route path='/favorites'>
+        <FavoritesPage/>
+      </Route>
+    </Switch>
+  </Layout>;
 }
 
 export default App;
